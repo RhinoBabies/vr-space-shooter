@@ -7,6 +7,7 @@ public class DestroyByContact : MonoBehaviour
 	public GameObject explosion;
 	public GameObject playerExplosion;
 	public int scoreValue;
+
 	private GameController gameController;
 
 	void Start()
@@ -24,7 +25,7 @@ public class DestroyByContact : MonoBehaviour
 	{
 		if (other.tag == "Boundary")
 			return;
-		//Debug.Log (other.name + " is in trigger");
+		Debug.Log (gameObject.name + " hits " + other.name);
 		Instantiate(explosion, transform.position, transform.rotation);
 		if (other.tag == "Player")
 		{

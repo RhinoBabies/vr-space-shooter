@@ -13,7 +13,7 @@ public class Boundary
 public class PlayerController : MonoBehaviour {
 
 //	private Rigidbody rb;
-	private AudioSource audio;
+	private AudioSource audioSource;
 
 /* variables used for arcade style space-shooter
 	public float speed;
@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour {
 	void Start()
 	{
 //		rb = GetComponent<Rigidbody> ();
-		audio = GetComponent<AudioSource> ();
+		audioSource = GetComponent<AudioSource> ();
 	}
 
 	void Update()
@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour {
 		if (Input.GetButton ("Fire1") && Time.time > nextFire) {
 			nextFire = Time.time + fireRate;
 			Instantiate (bolt, shotSpawn.position, shotSpawn.rotation);
-			audio.Play ();
+			audioSource.Play ();
 		}
 	}
 

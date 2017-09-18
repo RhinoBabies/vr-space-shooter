@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour
 {
 	public GameObject hazard;
+	public GameObject treasure;
 	public Vector3 spawnValues;
 	public int hazardCount;
 	public float spawnWait;
@@ -34,7 +35,7 @@ public class GameController : MonoBehaviour
 	void Update()
 	{
 		if (restart) {
-			if (Input.GetKeyDown (KeyCode.R)) {
+			if (Input.GetKeyDown (KeyCode.Backspace)) {
 				SceneManager.LoadScene ("vr-space");
 			}
 		}
@@ -50,9 +51,16 @@ public class GameController : MonoBehaviour
 			{
 				Vector3 spawnPosition = new Vector3 (Random.Range(-spawnValues.x,spawnValues.x), Random.Range(-spawnValues.y, spawnValues.y), spawnValues.z);
 				Quaternion spawnRotation = Quaternion.identity;
+				if (i > 5) {
+					if (Random.Range (0, 10) < 3) {
+						Instantiate(treasure, spawnPosition, spawnRotation);
+						yield return new WaitForSeconds (spawnWait);
+					}
+				}
 				Instantiate (hazard, spawnPosition, spawnRotation);
 				yield return new WaitForSeconds (spawnWait); //delay spawning of asteroids to avoid collisions between them
 			}
+			hazardCount++;
 			yield return new WaitForSeconds (waveWait);
 
 			if (gameOver) {
@@ -62,7 +70,7 @@ public class GameController : MonoBehaviour
 			}
 		}
 	}
-
+		
 	public void AddScore (int newScoreValue)
 	{
 		score += newScoreValue;
@@ -71,7 +79,7 @@ public class GameController : MonoBehaviour
 
 	void UpdateScore()
 	{
-//
+		//need Score Text to work properly on canvas
 	}
 
 	public void GameOver()

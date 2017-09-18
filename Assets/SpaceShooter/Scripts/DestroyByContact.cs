@@ -23,7 +23,7 @@ public class DestroyByContact : MonoBehaviour
 
 	void OnTriggerEnter(Collider other)
 	{
-		if (other.tag == "Boundary")
+		if (other.tag == "Boundary" || other.tag == "Radar")
 			return;
 		Debug.Log (gameObject.name + " hits " + other.name);
 		Instantiate(explosion, transform.position, transform.rotation);

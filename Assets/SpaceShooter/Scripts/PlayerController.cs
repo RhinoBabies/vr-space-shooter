@@ -2,20 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
 [System.Serializable]
 public class Boundary
 {
 	public float xMin, xMax, zMin, zMax;
 }
+*/
 
 public class PlayerController : MonoBehaviour {
 
-	private Rigidbody rb;
+//	private Rigidbody rb;
 	private AudioSource audio;
 
+/* variables used for arcade style space-shooter
 	public float speed;
 	public float tilt;
 	public Boundary boundary;
+*/
 
 	public GameObject bolt;
 	public Transform shotSpawn; //avoids having to type shotSpawn.transform.position/rotation; Unity will recognize transform of the GameObject
@@ -25,7 +29,7 @@ public class PlayerController : MonoBehaviour {
 
 	void Start()
 	{
-		rb = GetComponent<Rigidbody> ();
+//		rb = GetComponent<Rigidbody> ();
 		audio = GetComponent<AudioSource> ();
 	}
 
@@ -38,6 +42,7 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
+/* unnecessary for VR game
 	void FixedUpdate()
 	{
 		float moveHorizontal = Input.GetAxis ("Horizontal");
@@ -55,4 +60,5 @@ public class PlayerController : MonoBehaviour {
 
 		rb.rotation = Quaternion.Euler (0.0f, 0.0f, rb.velocity.x * -tilt);
 	}
+*/
 }

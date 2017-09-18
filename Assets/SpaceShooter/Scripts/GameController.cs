@@ -35,7 +35,7 @@ public class GameController : MonoBehaviour
 	void Update()
 	{
 		if (restart) {
-			if (Input.GetKeyDown (KeyCode.Backspace)) {
+			if (Input.GetButton("Jump")) {
 				SceneManager.LoadScene ("vr-space");
 			}
 		}
